@@ -55,7 +55,7 @@ class MainController {
 
     req.session.save (err => {
       if (err) throw err
-      res.redirect('/')
+      // res.redirect('/')
     })
 
     res.json({success: true})
