@@ -1,14 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from "react-router-dom";
-import './index.css';
-import App from './App';
+import React, { createContext } from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import NoteStore from './store/NoteStore'
+import UserStore from './store/UserStore'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+export const Context = createContext(null)
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
+
+// Initial render
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+  <Context.Provider value={{
+    user: new UserStore(),
+    note: new NoteStore()
+  }}>
+    <App />
+  </Context.Provider>
 )

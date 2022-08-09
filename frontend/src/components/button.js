@@ -1,29 +1,59 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from "react-router-dom"
+import { AUTH_PG_ROUTE } from "../utils/consts"
+
 
 const Button = (props) => {
   
-  const functionsContainer = (props) => {
-    props.isSignInHandlerProperty(props.isSignIn)
-    showModalHandler(props.modalClassName, props.offsetModalClassName)
+  const navigate = useNavigate()
+
+  const openAuthTab = (props) => {
+
+
+    if (props.whichTab === 'login') {
+      navigate(AUTH_PG_ROUTE)
+    } else if (props.whichTab === 'registration') {
+      navigate(AUTH_PG_ROUTE)
+    }
   }
 
-  const showModalHandler = (modalClassName, offsetModalClassName) => {
-    document.getElementsByClassName(modalClassName)[0].style.display = 'block'
-    const offsetModalBlock = document.getElementsByClassName(offsetModalClassName)[0]
+  useEffect(() => {
+    if (props.page === 'auth') {
+      const signUpButton = document.getElementById('signUp');
+      const signInButton = document.getElementById('signIn');
+      const container = document.getElementById('container');
+      
+      signUpButton.addEventListener('click', () =>
+      container.classList.add('right-panel-active'));
+      
+      signInButton.addEventListener('click', () =>
+      container.classList.remove('right-panel-active'));
+    }
+  })
+
   
-    offsetModalBlock.style.top = 0
-    offsetModalBlock.style.display = 'block'
-  }
-
-
 
   return (
+
+    (props.page === 'main') ?
+    
     <button
-      onClick = { () => functionsContainer(props) }
+      onClick = { () => openAuthTab(props) }
       className = {props.class}
     >
       {props.text}
     </button>
+
+    : (props.page === 'auth') ?
+
+    <button
+      className = {props.class}
+      id = {props.id}
+    >
+      {props.text}
+    </button>
+
+    : <h1>Упс, произошло что-то нехорошее ...</h1>
   )
 
 }

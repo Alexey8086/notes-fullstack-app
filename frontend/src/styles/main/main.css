@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff !important;
+}
+
+#ctm-container {
+  width: 90vw;
+  height: 100vh;
+  margin: 0 auto;
+}
+#ctm-container #welcome-title {
+  width: 100%;
+  padding-top: 250px;
+  padding-left: 200px;
+}
+#ctm-container #welcome-title p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 54px;
+  margin: 0;
+  padding: 0;
+  text-shadow: 2px 7px 4px rgba(0, 0, 0, 0.27);
+}
+#ctm-container #btns-container {
+  width: 100%;
+  padding-left: 200px;
+  margin-top: 225px;
+}
+#ctm-container #btns-container button {
+  font-family: "Roboto Bold", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  background-color: transparent;
+  border: 4px solid black;
+  color: black;
+  border-radius: 50px;
+}
+#ctm-container #btns-container button:not(:hover) {
+  transition: 700ms;
+  color: black;
+  background-color: transparent;
+}
+#ctm-container #btns-container .sign-up-btn {
+  width: 400px;
+  height: 70px;
+}
+#ctm-container #btns-container .sign-up-btn:hover {
+  transition: 500ms;
+  color: white;
+  background-color: black;
+}
+#ctm-container #btns-container .sign-in-btn {
+  width: 220px;
+  height: 70px;
+}
+#ctm-container #btns-container .sign-in-btn:hover {
+  transition: 500ms;
+  color: white;
+  background-color: black;
+}
+
+#cursor {
+  position: absolute;
+  top: 320px;
+  left: 1065px;
+  width: 4px;
+  height: 70px;
+  background-color: black;
+  -webkit-animation: dissapear 900ms linear alternate infinite;
+          animation: dissapear 900ms linear alternate infinite;
+}
+
+@-webkit-keyframes dissapear {
+  from {
+    background-color: black;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+@keyframes dissapear {
+  from {
+    background-color: black;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+#astronaut-icon {
+  position: absolute;
+  top: 533px;
+  left: 955px;
+  -webkit-animation: gravity 2s linear alternate infinite;
+          animation: gravity 2s linear alternate infinite;
+}
+
+@-webkit-keyframes gravity {
+  from {
+    top: 533px;
+  }
+  to {
+    top: 556px;
+  }
+}
+
+@keyframes gravity {
+  from {
+    top: 533px;
+  }
+  to {
+    top: 556px;
+  }
+}/*# sourceMappingURL=main.css.map */

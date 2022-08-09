@@ -1,0 +1,65 @@
+:root {
+  --flick-big-text-shadow:
+      0 0 2px #fff,
+      0 0 4px #fff,
+      0 0 8px #fff,
+      0 0 15px #5DD3FF,
+      0 0 30px #5DD3FF,
+      0 0 40px #5DD3FF,
+      0 0 70px #5DD3FF,
+      0 0 100px #5DD3FF;
+  --flick-small-text-shadow:
+      0 0 1px #fff,
+      0 0 2px #fff,
+      0 0 5px #fff,
+      0 0 11px #5DD3FF,
+      0 0 20px #5DD3FF,
+      0 0 30px #5DD3FF,
+      0 0 55px #5DD3FF,
+      0 0 80px #5DD3FF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  background-color: rgb(0, 0, 0);
+}
+
+.container {
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  color: #fff;
+}
+
+.neon-text>h1 {
+  font-size: 3.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.neon-text>h2 {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.neon-text {
+  color: #fff;    
+  text-shadow: var(--flick-small-text-shadow);
+}
+
+.neon-text>h1 {
+  animation: flicker .5s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: var(--flick-big-text-shadow);
+  }
+  20%, 24%, 55% {       
+    text-shadow: var(--flick-small-text-shadow);;
+  }
+}

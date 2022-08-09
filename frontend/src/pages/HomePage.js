@@ -1,11 +1,11 @@
-import '../styles/homePage.css'
+import React from 'react'
 
-
-export default function HomePage () {
-
+const HomePage = () => {
   return (
     <div>
-      <h1>HOME PAGE</h1>
+      <h1>Home PAGE</h1>
     </div>
   )
 }
+
+export default HomePage
