@@ -1,0 +1,54 @@
+::-webkit-scrollbar-button {
+  background-color: none;
+}
+
+.item {
+  background-color: #EEEDED;
+  border-radius: 25px;
+  box-shadow: 3px 5px 9px rgba(0, 0, 0, 0.25);;
+  transition: 0.8s;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  padding: 15px;
+  cursor: pointer;
+
+  div {
+  width: 100%;
+  }
+
+  .item__title {
+    height: 10%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .item__text {
+    height: 80%;
+
+    textarea {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: 0;
+      outline: none;
+      resize: none;
+      overflow: auto;
+      cursor: pointer;
+    }
+  }
+  
+  .item__date {
+    height: 10%;
+    border-top: 1px solid rgb(72, 72, 72);
+    padding-top: 5px;
+  }
+  
+  &:hover{
+    background-color: #e5e3e3;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+}
+

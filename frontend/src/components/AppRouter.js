@@ -3,11 +3,11 @@ import {Routes, Route, Navigate } from 'react-router-dom'
 import { privateRoutes, publicRoutes } from '../routes'
 import { NOTFOUND_PG_ROUTE } from '../utils/consts'
 import { Context } from '../index'
+import { observer } from "mobx-react-lite"
 
-const AppRouter = () => {
+const AppRouter = observer(() => {
   const { user } = useContext(Context)
 
-  console.log(user)
   return (
     <Routes>
       { user.isAuth &&
@@ -37,6 +37,6 @@ const AppRouter = () => {
 
     </Routes>
   )
-}
+})
 
 export default AppRouter

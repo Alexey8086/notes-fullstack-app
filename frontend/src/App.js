@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import AppRouter from './components/AppRouter'
 import { BrowserRouter } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
+import { Context } from './index'
+import { check } from './http/userAPI'
+import BarLoader from "react-spinners/BarLoader"
 
-const App = () => {
+const App = observer(() => {
+  const { user } = useContext(Context)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    check().then(data => {
+      user.setUser(data)
+      user.setIsAuth(true)
+    }).finally( () => setLoading(false) )
+
+  }, [])
+
+  if (loading) {
+    return <BarLoader color = { '#837DFE' } loading = { loading } size = { 150 } />
+  }
+
   return (
 
     <BrowserRouter>
@@ -10,6 +29,6 @@ const App = () => {
     </BrowserRouter>
 
   )
-}
+})
 
 export default App

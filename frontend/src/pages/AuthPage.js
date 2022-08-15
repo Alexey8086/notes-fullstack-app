@@ -1,30 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../styles/auth/auth.css'
 import Button from '../components/button'
+import Form from '../components/form'
+import { NOTFOUND_PG_ROUTE } from '../utils/consts'
+import { useNavigate, useParams } from "react-router-dom"
+import { observer } from "mobx-react-lite"
 
-const AuthPage = () => {
+const AuthPage = observer(() => {
+
+  const navigate = useNavigate()
+  const { tab } = useParams()
+  let containerClasses = (tab === 'login') ? "container" : "container right-panel-active"
+
+  useEffect(() => {
+    if ( !(tab === 'registration' || tab === 'login') ) {
+      navigate(NOTFOUND_PG_ROUTE)
+    } 
+  }, [])
+
   return (
     <>
-      <div className="container" id="container">
+      <div className={containerClasses} id="container">
         <div className="form-container sign-up-container">
-          <form action="#">
-            <h1>Регистрация</h1>
-            <span>или используйте свой E-mail для регистрации</span>
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button>Зарегистрироваться</button>
-          </form>
+          <Form whichTab='registration'/>
         </div>
         <div className="form-container sign-in-container">
-          <form action="#">
-            <h1>Авторизация</h1>
-            <span>или используйте свой аккаунт</span>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <a href="#">Забыли пароль?</a>
-            <button>Войти</button>
-          </form>
+          <Form whichTab='login'/>
         </div>
         <div className="overlay-container">
           <div className="overlay">
@@ -56,6 +57,6 @@ const AuthPage = () => {
 
     </>
   )
-}
+})
 
 export default AuthPage

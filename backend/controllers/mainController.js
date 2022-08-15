@@ -5,7 +5,7 @@ const ApiError = require('../error/ApiError')
 
 const generateJwt = (id, email) => {
   return jwt.sign(
-    { id, email },
+    { id, email},
     process.env.SECRET_KEY,
     { expiresIn: '10h' }
   )
@@ -31,6 +31,7 @@ class MainController {
       const hashPassword = await bcrypt.hash(password, 5)
       const user = await Users.create({email, password: hashPassword, name})
       const token = generateJwt(user.id, user.email)
+
       res.json({token})
   }
 
