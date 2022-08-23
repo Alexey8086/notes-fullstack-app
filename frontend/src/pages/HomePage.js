@@ -5,14 +5,36 @@ import '../styles/home/home.css'
 import Sidebar from '../components/sidebar'
 import Note from '../components/note'
 import { getUser } from '../http/userAPI'
+import { getAllNotes } from '../http/noteAPI'
+import BarLoader from "react-spinners/BarLoader"
 
 
 const HomePage = observer(() => {
 
+  const showLogs = process.env.REACT_APP_SHOW_LOGS
   const { user } = useContext(Context)
+  const [loading, setLoading] = useState(true)
+  const [notes, setNotes] = useState('')
+  const [id, setId] = useState()
+
 
   useEffect(() => {
-    getUser(user.user.id).then(data => user.setUser(data))
+    let userId
+
+    if (showLogs) console.log(user)
+    user.user.id ? userId = user.user.id : userId = user.user.data?.user.id
+    setId(userId)
+
+    getUser(userId)
+      .then(data => user.setUser(data))
+      .catch((e) => console.log(e.response.data?.message))
+
+    getAllNotes(userId)
+      .then(res => {
+        setNotes(res.data)
+        setLoading(false)
+      })
+      .catch((e) => console.log(e))
     
    }, [])
 
@@ -28,8 +50,7 @@ const HomePage = observer(() => {
     }
    }, [])
 
-  // console.log(userData)
-
+  console.log(notes.length)
 
   return (
     <>
@@ -41,9 +62,14 @@ const HomePage = observer(() => {
       </div>
 
       <div id="main-grid-container">
-          <Sidebar />
+          <Sidebar userId={id}/>
           <div id="blocks-grid-container">
-          <Note />
+          {  loading ? 
+            <BarLoader color = { '#837DFE' } loading = { loading } size = { 150 } />
+            : notes.length ? notes.map((item) => <Note key={item.id} noteId={ item.id } blocks={item.data.blocks} time={item.data.time} />)
+            : <div className='emptyMsg'>Тут пока космически пусто ...</div>
+          }
+          
           </div>
       </div>
     </>

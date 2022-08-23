@@ -1,29 +1,29 @@
-import React, { useEffect, useRef, useCallback } from 'react'
+import React, { useEffect, useRef, useCallback, useContext } from 'react'
+import { useNavigate } from "react-router-dom"
+import { observer } from "mobx-react-lite"
+import { Context } from '../index'
 import { createReactEditorJS } from 'react-editor-js'
 import '../styles/createNote/createNote.css'
 import { TOOLS } from '../utils/editorTools'
+import { HOME_PG_ROUTE } from '../utils/consts'
+import { createNote } from '../http/noteAPI'
 
 
 
-const NotePage = () => {
+const NotePage = observer(() => {
+
+  const showLogs = process.env.REACT_APP_SHOW_LOGS
+  const { user } = useContext(Context)
+  const navigate = useNavigate()
+
+  let userId
+  user.user.id ? userId = user.user.id : userId = user.user.data?.user.id
 
   useEffect(() => {
     // componentWillMount
     const root = document.getElementById('root')
-    const btnsContainer = document.getElementById('createNotePage__btn-container')
-    const workspaceContainer = document.getElementById('workspace_container')
 
     root.classList.add('home-root-container')
-
-    btnsContainer.style.width = `${workspaceContainer.offsetWidth * 0.9}px`
-    btnsContainer.style.left = `${(window.innerWidth - btnsContainer.offsetWidth)/2}px`
-
-    window.addEventListener('resize', e => {
-      btnsContainer.style.width = `${workspaceContainer.offsetWidth * 0.9}px`
-      btnsContainer.style.left = `${(window.innerWidth - btnsContainer.offsetWidth)/2}px`
-    })
-
-
 
     return () => {
       // componentWillUnmount
@@ -43,12 +43,15 @@ const NotePage = () => {
 
   const handleSave = useCallback(async () => {
     const DATA = await editorCore.current.save()
-    console.log('SAVED DATA from editorJS -------- > ', DATA)
-  }, [])
+    const res = await createNote(DATA, userId)
 
-  const handleDelete = useCallback(async () => {
-    const DATA = await editorCore.current.save()
-    console.log('SAVED DATA from editorJS -------- > ', DATA)
+
+    if (showLogs) {
+      console.log('SAVED DATA from editorJS -------- > ', DATA)
+      console.log('RESPONSE FROM SERVER -------- > ', res)
+    }
+
+    navigate(HOME_PG_ROUTE)
   }, [])
    
 
@@ -73,11 +76,10 @@ const NotePage = () => {
 
       <div id='createNotePage__btn-container'>
         <button id='btn-save' onClick={ handleSave }>СОХРАНИТЬ</button>
-        <button id='btn-delete' onClick={ handleDelete }>УДАЛИТЬ</button>
       </div>
     </>
   )
-}
+})
 
 export default NotePage
 

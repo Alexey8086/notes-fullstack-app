@@ -11,25 +11,28 @@ import settings from '../imgs/Settings.png'
 import logout from '../imgs/Logout.png'
 
 
-const Sidebar = observer(() => {
+const Sidebar = observer((props) => {
 
   const { user } = useContext(Context)
-  const { name } = user.user.data.user
+  let name = null
+  let avatar = null
+  if (user.user.data?.user)  {
+    name = user.user.data.user.name
+    avatar = user.user.data.user.avatar
+  }
+  
   const navigate = useNavigate()
   
+  const isAvatarMine = (url) => {
+    if (url?.indexOf('https://avatars.dicebear.com') == -1) {
+      return true
+    } else {
+      return false
+    }
+  }
 
-
-  // useEffect(() => {
-  //   componentWillMount
-
-
-  //   return () => {
-  //     componentWillUnmount
-  //   }
-  //  }, [])
-  
   const onClickHandler = (page) => {
-    page === 'settings' ? navigate(SETTINGS_PG_ROUTE)
+    page === 'settings' ? navigate(`${SETTINGS_PG_ROUTE}/${props.userId}`)
     : page === 'note' ? navigate(NOTE_PG_ROUTE)
     : console.log('Smt went wrong in onClickHandler')
   }
@@ -39,10 +42,15 @@ const Sidebar = observer(() => {
   }
 
   const logoutHandler = () => {
-    // user.setUser({})
-    // user.setIsAuth(false)
-    // navigate(AUTH_PG_ROUTE)
+    user.setUser({})
+    user.setIsAuth(false)
+    localStorage.removeItem('token')
+    navigate(`${AUTH_PG_ROUTE}/login`)
   }
+
+  const avatarStyle = isAvatarMine(avatar) ?
+    { backgroundImage: `url(${process.env.REACT_APP_API_URL}${avatar})` }
+  : { backgroundImage: `url(${avatar})` }
 
   return (
 
@@ -53,7 +61,7 @@ const Sidebar = observer(() => {
 
         <hr id="dividens" />
 
-        <div id="avatar-icon"></div>
+        <div id="avatar-icon" style={avatarStyle}></div>
         <div id="avatar-name">{ name }</div>
 
         <img id="add-new-notes-icon" width="54" height="56" src={addNewNote} alt="Добавть заметку" />

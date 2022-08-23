@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #eeeded;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+#profile-image {
+  position: absolute;
+  width: 280px;
+  height: 330px;
+  left: 174px;
+  top: 134px;
+  background-color: #F9F0FF;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 1px solid #888888;
+  box-shadow: 4px 6px 10px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+#username-caption {
+  position: absolute;
+  min-width: 143px;
+  height: 38px;
+  left: 559px;
+  top: 269px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  /* identical to box height */
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  color: #000000;
+}
+
+#change-name {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  cursor: pointer;
+  color: #70A0FF;
+}
+
+#username-input-field {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid gray;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  outline: none;
+}
+
+#back_link_img {
+  position: absolute;
+  width: 46px;
+  height: 40px;
+  left: 174px;
+  top: 17px;
+}
+
+#back-link-wrapper {
+  position: absolute;
+  min-width: 160px;
+  height: 22px;
+  left: 207px;
+  top: 26px;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #70A0FF;
+}
+
+#back-link-wrapper>a {
+  color: #70A0FF;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.download-img-field {
+  position: absolute;
+  width: 260px;
+  height: 30px;
+  left: 184px;
+  top: 410px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 23px;
+  background-color: transparent;
+  border: 1px solid #70A0FF;
+  color: #70A0FF;
+
+  &:hover {
+    background-color: #70A0FF;
+    color: white;
+    transition: ease-in-out 300ms;
+  }
+}
+
+
+#save-changes-btn {
+  position: absolute;
+  width: 528px;
+  height: 62px;
+  left: 174px;
+  top: 545px;
+  border: 0;
+  background: #70A0FF;
+  box-shadow: 5px 7px 50px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 45px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  color: white;
+}
+
+#didnt-take-pic {
+  position: absolute;
+  max-width: 528px;
+  left: 174px;
+  top: 625px;
+  color:#dc7241;
+}

@@ -17,11 +17,11 @@ export const privateRoutes = [
     Component: CreateNotePage
   },
   {
-    path: NOTE_PG_ROUTE + '/:id',
+    path: NOTE_PG_ROUTE + '/:noteId',
     Component: NotePage
   },
   {
-    path: SETTINGS_PG_ROUTE,
+    path: SETTINGS_PG_ROUTE + '/:id',
     Component: SettingsPage
   },
 ]

@@ -20,6 +20,16 @@ export const check = async () => {
 }
 
 export const getUser = async (id) => {
-  const user = await $host.get(`api/user/getUser?id=${id}`)
+  const user = await $host.get(`api/user/getUser/${id}`)
   return user
+}
+
+export const updateSettings = async (id, avatar) => {
+  const res = await $authHost.post('api/settings/update', {id, avatar})
+  return res
+}
+
+export const handleImage = async (avatar) => {
+  const res = await $authHost.post('api/uploads/imgs', avatar)
+  return res
 }

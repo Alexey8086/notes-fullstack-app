@@ -47,7 +47,7 @@ aside>div, img {
 
 #logo {
   top: 18px;
-  left: 35px
+  left: 35px;
 }
 
 .title-text {
@@ -79,6 +79,10 @@ aside>div, img {
   background: #F7CDCD;
   border: 1px solid #888888;
   box-shadow: 8px 8px 10px 4px rgba(80, 79, 79, 0.19);
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #avatar-name {
@@ -203,6 +207,14 @@ aside>div, img {
 
 #sm-container-sidebar, #sm-sidebar {
   display: none;
+}
+
+.emptyMsg {
+  position: absolute;
+  width: 70%;
+  text-align: center;
+  top: calc(50vh - 25px);
+  font-weight: bold;
 }
 
 /* Для смартфонов */

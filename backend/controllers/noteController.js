@@ -1,5 +1,4 @@
 const {Notes} = require('../models/models')
-const ApiError = require('../error/ApiError')
 
 class NoteController {
 
@@ -11,17 +10,27 @@ class NoteController {
   }
 
   async update (req, res, next) {
-    const {data, userId} = req.body
+    const {data, id} = req.body
     
-    await Notes.update({data}, {where: {userId}})
+    await Notes.update({data}, {where: {id}})
     return res.json("Note has been updated")
   }
 
+  async deleteOne (req, res, next) {
+    const {id} = req.query
+
+    console.log('id ------->>>>>> ', id)
+
+    const response = await Notes.destroy({ where: { id: id } })
+
+    return res.json(response)
+  }
+
   async getAllNotes (req, res, next) {
-    const {userId} = req.query
+    const { userId } = req.params
     let notes = await Notes.findAll({where: {userId}})
     // Normalize JSON data from database for client (converting to normal json object without weird symbols like a '/n')
-    notes = JSON.parse(notes[0].data)
+    // notes = JSON.parse(notes[0].data)
 
     // return res.json({ID: id})
     return res.json(notes)

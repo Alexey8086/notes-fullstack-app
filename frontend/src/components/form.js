@@ -6,7 +6,6 @@ import { Context } from '../index'
 import { registration, login } from '../http/userAPI'
 
 
-
 const Form = observer((props) => {
 
   const {user} = useContext(Context)
@@ -39,7 +38,7 @@ const Form = observer((props) => {
       user.setUser(res)
       user.setIsAuth(true)
     } catch (e) {
-      setError(e.response?.data.message)
+      setError(e.response?.data?.message)
     }
   }
 
