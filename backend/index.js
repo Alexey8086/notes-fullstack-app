@@ -1,17 +1,16 @@
 require('dotenv').config()
 const express = require('express')
-const sequelize = require('./db')
+const mongoose = require('mongoose')
 const session = require('express-session')
 const varMiddleware = require('./middleware/variables')
-// const models = require('./models/models')
 const cors = require('cors')
-// const fileUpload = require('express-fileupload')
 const router = require('./routes/index')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
 const path = require('path')
 const { env } = require('process')
 
 const PORT = process.env.PORT || 5000
+const DB_URL = process.env.DB_URL || ''
 
 const app = express()
 
@@ -32,11 +31,10 @@ app.use(errorHandler)
 
 const start = async () => {
   try {
-    await sequelize.authenticate()
-    await sequelize.sync()
-    app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
+    await mongoose.connect(DB_URL)
+    app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
   } catch (e) {
-    console.log(e)
+    console.warn('INIT APPLICATION WARNING:', e)
   }
 }
 

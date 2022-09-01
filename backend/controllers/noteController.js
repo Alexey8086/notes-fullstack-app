@@ -1,46 +1,70 @@
-const {Notes} = require('../models/models')
+const Note = require('../models/Note')
 
 class NoteController {
 
-  async create (req, res, next) {
+  async create (req, res) {
     const {data, userId} = req.body
-    await Notes.create({data, userId})
 
-    return res.json("Note has been created")
+    try {
+
+      const note = new Note({data, userId})
+      await note.save()
+      return res.json("Note has been created")
+
+    } catch (error) {
+      console.warn(`ERROR FROM create note ---> ${error} `)
+    }
   }
 
-  async update (req, res, next) {
+  async update (req, res) {
     const {data, id} = req.body
     
-    await Notes.update({data}, {where: {id}})
-    return res.json("Note has been updated")
+    try {
+
+      await Note.updateOne({id}, {data})
+      return res.json("Note has been updated")
+
+    } catch (error) {
+      console.warn(`ERROR FROM update note ---> ${error} `)
+    }
   }
 
-  async deleteOne (req, res, next) {
+  async deleteOne (req, res) {
     const {id} = req.query
 
-    console.log('id ------->>>>>> ', id)
+    if (process.env.SHOW_LOGS) console.log('id ------->>>>>> ', id)
 
-    const response = await Notes.destroy({ where: { id: id } })
+    try {
+      const response = await Note.deleteOne({id})
+      return res.json(response)
 
-    return res.json(response)
+    } catch (error) {
+      console.warn(`ERROR FROM delete note ---> ${error} `)
+    }
   }
 
-  async getAllNotes (req, res, next) {
+  async getAllNotes (req, res) {
     const { userId } = req.params
-    let notes = await Notes.findAll({where: {userId}})
-    // Normalize JSON data from database for client (converting to normal json object without weird symbols like a '/n')
-    // notes = JSON.parse(notes[0].data)
 
-    // return res.json({ID: id})
-    return res.json(notes)
+    try {
+      const notes = await Note.find({userId}).exec()
+      return res.json(notes)
+
+    } catch (error) {
+      console.warn(`ERROR FROM getting all notes ---> ${error} `)
+    }
   }
 
   async getOne (req, res, next) {
     const {id} = req.query
-    const note = await Notes.findOne({where: {id}})
 
-    return res.json(note)
+    try {
+      const note = await Note.findOne({id})
+      return res.json(note)
+      
+    } catch (error) {
+      console.warn(`ERROR FROM getting one note ---> ${error} `)
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-const {Users} = require('../models/models')
+const UserN = require('../models/User')
 const ApiError = require('../error/ApiError')
 
 class SettingsController {
@@ -6,12 +6,12 @@ class SettingsController {
   async update (req, res) {
     const {id, avatar} = req.body
     try {
-      await Users.update({avatar}, {where: {id}})
-    } catch (e) {
-      console.error(e)
-    }
+      await UserN.updateOne({id}, {avatar})
+      return res.json("Data has been updated")
 
-    return res.json("Data has been updated")
+    } catch (error) {
+      console.warn(`ERROR FROM updating settings ---> ${error} `)
+    }
   }
 
 }

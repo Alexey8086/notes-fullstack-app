@@ -1,25 +1,9 @@
-const {Users} = require('../models/models')
+const UserN = require('../models/User')
 const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
 const ApiError = require('../error/ApiError')
-const axios = require('axios')
+const getUrl = require('../utils/getUrl')
+const generateJwt = require('../utils/generateJwt')
 
-const generateJwt = (id, email) => {
-  return jwt.sign(
-    { id, email},
-    process.env.SECRET_KEY,
-    { expiresIn: '10h' }
-  )
-}
-
-const getUrl = async (req, res) =>{
-    
-  const {data} = await axios.get('https://randomuser.me/api/?inc=name')
-  const name = data.results[0].name.first
-  const url = `https://avatars.dicebear.com/api/avataaars/${name}.svg?background=%23F9F0FF`
-  
-  return url
-}
 
 class MainController {
 
@@ -31,7 +15,7 @@ class MainController {
         return next(ApiError.badRequest(`Некорректный email или password BODY: ${req.body}`))
       }
 
-      const candidate = await Users.findOne({where: {email}})
+      const candidate = await UserN.findOne({email})
 
     // if user is EXIST then returns Error
       if (candidate) {
@@ -40,8 +24,9 @@ class MainController {
 
       const avatar = await getUrl()
       const hashPassword = await bcrypt.hash(password, 5)
-      const user = await Users.create({email, password: hashPassword, name, avatar})
-      const token = generateJwt(user.id, user.email)
+      const user = new UserN({email, password: hashPassword, name, avatar})
+      const userData = await user.save()
+      const token = generateJwt(userData.id, userData.email)
 
       res.json({token})
   }
@@ -49,7 +34,7 @@ class MainController {
   async login (req, res, next) {
     
     const {email, password} = req.body
-    const user = await Users.findOne({where: {email}})
+    const user = await UserN.findOne({email})
 
     if (!user) {
       return next(ApiError.internal('Пользователь не найден'))
@@ -83,7 +68,7 @@ class MainController {
 
   async getUser (req, res, next) {
     const {id} = req.params
-    const user = await Users.findOne({where: {id: id}})
+    const user = await UserN.findOne({id})
     if (!user) {
       return next(ApiError.badRequest('Упс, у вас проблемы с аутентификацией, мы не можем вас найти'))
     }
