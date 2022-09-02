@@ -1,0 +1,13 @@
+:root {
+  --pure-color: #fff;
+  --background: rgb(244, 244, 244);
+  --field: rgb(219, 219, 219);
+  --text-primary: rgb(36, 36, 36);
+}
+  
+  [data-theme='dark'] {
+    --pure-color: rgb(36, 36, 36);
+    --background: rgb(50, 50, 50);
+    --field: rgb(69, 69, 69);
+    --text-primary: rgb(212, 212, 212);
+  }

@@ -1,4 +1,4 @@
-import {makeAutoObservable} from 'mobx'
+import {makeAutoObservable, toJS} from 'mobx'
 
 export default class UserStore {
   constructor () {
@@ -21,6 +21,6 @@ export default class UserStore {
   }
 
   get user () {
-    return this._user
+    return toJS(this._user)
   }
 }

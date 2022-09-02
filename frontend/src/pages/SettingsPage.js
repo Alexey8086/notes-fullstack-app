@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import backArrow from  '../imgs/back.png'
 import '../styles/settings/settings.css'
 import { HOME_PG_ROUTE } from '../utils/consts'
@@ -13,6 +13,8 @@ const SettingsPage = () => {
   const [userName, setName] = useState()
   const inputFileRef = useRef(null)
   const inputNameRef = useRef(null)
+
+  const navigate = useNavigate()
 
   const isAvatarMine = (url) => {
     if (url?.indexOf('https://avatars.dicebear.com') == -1) {
@@ -48,6 +50,7 @@ const SettingsPage = () => {
   const uploadHandler = async (userId, avatarUrl) => {
     try {
       await updateSettings(userId, avatarUrl)
+      navigate(HOME_PG_ROUTE)
     } catch (err) {
       console.warn(err)
     }

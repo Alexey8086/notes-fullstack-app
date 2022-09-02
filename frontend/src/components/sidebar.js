@@ -1,26 +1,26 @@
-import React, { useEffect, useContext } from 'react'
-import { useNavigate, useParams, useRouteMatch } from "react-router-dom"
-import { SETTINGS_PG_ROUTE, NOTE_PG_ROUTE, AUTH_PG_ROUTE } from '../utils/consts'
-import { observer } from 'mobx-react-lite'
+import React, { useEffect, useState, useContext} from 'react'
 import { Context } from '../index'
+import { useNavigate, useParams } from "react-router-dom"
+import { SETTINGS_PG_ROUTE, NOTE_PG_ROUTE, AUTH_PG_ROUTE } from '../utils/consts'
 
 import logo from '../imgs/Logo.png'
 import addNewNote from '../imgs/Add new notes.png'
 import theme from '../imgs/Theme.png'
 import settings from '../imgs/Settings.png'
 import logout from '../imgs/Logout.png'
+import { observer } from 'mobx-react-lite'
 
 
 const Sidebar = observer((props) => {
 
-  const { user } = useContext(Context)
-  let name = null
-  let avatar = null
-  if (user.user.data?.user)  {
-    name = user.user.data.user.name
-    avatar = user.user.data.user.avatar
-  }
-  
+  const {user} = useContext(Context)
+
+  // при перезагрузки страницы mobX state обнуляется и user.data становится не валидной
+  // но потом за счёт setInterval рендера state заполняется снова
+  // это занимает очень мало времени, но его хватает для появления ошибки, поэтому нужна проверка ? чтобы приложение не падало
+  let avatar = props.user?.data.user.avatar
+  let name = props.user?.data.user.name
+
   const navigate = useNavigate()
   
   const isAvatarMine = (url) => {
@@ -61,7 +61,7 @@ const Sidebar = observer((props) => {
 
         <hr id="dividens" />
 
-        <div id="avatar-icon" style={avatarStyle}></div>
+        <div id="avatar-icon" style={ avatarStyle }></div>
         <div id="avatar-name">{ name }</div>
 
         <img id="add-new-notes-icon" width="54" height="56" src={addNewNote} alt="Добавть заметку" />

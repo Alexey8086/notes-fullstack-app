@@ -100,6 +100,7 @@ aside > div, img {
   height: 48px;
   left: 29px;
   top: 365px;
+  cursor: pointer;
 }
 
 #caption-add-new-notes {
@@ -111,6 +112,7 @@ aside > div, img {
   font-size: 24px;
   line-height: 28px;
   color: #000000;
+  cursor: pointer;
 }
 
 #ch-theme-icon {
@@ -118,6 +120,7 @@ aside > div, img {
   height: 42px;
   left: 35px;
   top: 458px;
+  cursor: pointer;
 }
 
 #caption-ch-theme {
@@ -128,6 +131,7 @@ aside > div, img {
   font-weight: 400;
   font-size: 24px;
   line-height: 28px;
+  cursor: pointer;
   color: #000000;
 }
 
@@ -136,6 +140,7 @@ aside > div, img {
   height: 45px;
   left: 34px;
   top: 550px;
+  cursor: pointer;
 }
 
 #caption-settings {
@@ -147,6 +152,7 @@ aside > div, img {
   font-size: 24px;
   line-height: 28px;
   color: #000000;
+  cursor: pointer;
 }
 
 #logout-icon {
@@ -154,6 +160,7 @@ aside > div, img {
   height: 45px;
   left: 35px;
   top: 632px;
+  cursor: pointer;
 }
 
 #caption-logout {
@@ -165,6 +172,7 @@ aside > div, img {
   font-size: 24px;
   line-height: 28px;
   color: #F14646;
+  cursor: pointer;
 }
 
 #main-grid-container {
