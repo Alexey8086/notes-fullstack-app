@@ -1,0 +1,15 @@
+:root {
+    --main-pa-btn-back: black;
+    --pure-color: white;
+    --background: #EEEEEE;
+    --text-primary: rgb(23, 23, 23);
+    --text-secondary: rgb(69, 69, 69);
+    --accent: purple;
+  }
+  [data-theme='dark'] {
+    --main-pa-btn-back: black;
+    --background: black;
+    --text-primary: white;
+    --text-secondary: grey;
+    --accent: darkred;
+  }
