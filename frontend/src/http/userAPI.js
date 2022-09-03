@@ -24,8 +24,8 @@ export const getUser = async (id) => {
   return user
 }
 
-export const updateSettings = async (id, avatar) => {
-  const res = await $authHost.post('api/settings/update', {id, avatar})
+export const updateSettings = async (id, avatar, name) => {
+  const res = await $authHost.post('api/settings/update', {id, avatar, name})
   return res
 }
 

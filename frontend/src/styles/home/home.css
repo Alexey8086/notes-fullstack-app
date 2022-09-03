@@ -6,14 +6,14 @@
 
 body {
   margin: 0;
-  background-color: #fff !important;
+  background-color: var(--background);
   overflow-x: hidden;
 }
 
 .home-root-container {
   width: 100vw;
   min-height: 100vh;
-  background-color: #eeeded;
+  background-color: var(--background);
 }
 
 ::-webkit-scrollbar {
@@ -53,7 +53,8 @@ aside > div, img {
 .title-text {
   top: 25px;
   left: 115px;
-  font-size: 36px;
+  color: var(--text-primary);
+  font-size: 1.9rem;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
@@ -64,7 +65,7 @@ aside > div, img {
   height: 0px;
   left: 17px;
   top: 84px;
-  border: 1px solid #888888;
+  border: 1px solid var(--text-secondary);
 }
 
 #avatar-icon {
@@ -75,7 +76,7 @@ aside > div, img {
   left: 38px;
   top: 142px;
   background: #F7CDCD;
-  border: 1px solid #888888;
+  border: 1px solid var(--text-secondary);
   box-shadow: 8px 8px 10px 4px rgba(80, 79, 79, 0.19);
   background-position: center;
   background-size: cover;
@@ -92,7 +93,7 @@ aside > div, img {
   line-height: 28px;
   display: flex;
   align-items: center;
-  color: #000000;
+  color: var(--text-primary);
 }
 
 #add-new-notes-icon {
@@ -111,7 +112,7 @@ aside > div, img {
   font-weight: 400;
   font-size: 24px;
   line-height: 28px;
-  color: #000000;
+  color: var(--text-primary);
   cursor: pointer;
 }
 
@@ -132,7 +133,7 @@ aside > div, img {
   font-size: 24px;
   line-height: 28px;
   cursor: pointer;
-  color: #000000;
+  color: var(--text-primary);
 }
 
 #settings-icon {
@@ -151,7 +152,7 @@ aside > div, img {
   font-weight: 400;
   font-size: 24px;
   line-height: 28px;
-  color: #000000;
+  color: var(--text-primary);
   cursor: pointer;
 }
 
@@ -184,11 +185,11 @@ aside > div, img {
 }
 
 #container-sidebar {
-  background-color: rgb(24, 25, 29); /* 40, 40, 40 */
+  background-color: var(--poore-color); /* 40, 40, 40 */
 }
 
 #sidebar {
-  background-color: #fff;
+  background-color: var(--poore-color);
   box-shadow: 3px 5px 9px rgba(0, 0, 0, 0.25);
   height: 100vh;
   width: auto;
@@ -200,7 +201,7 @@ aside > div, img {
 }
 
 #blocks-grid-container {
-  background-color: #EEEDED;
+  background-color: var(--background);
   padding: 50px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -231,7 +232,7 @@ aside > div, img {
     grid-template-rows: minmax(100vh, max-content);
   }
   #blocks-grid-container {
-    background-color: #EEEDED; /* #18191d  3d3a78 */
+    background-color: var(--background); /* #18191d  3d3a78 */
     padding: 50px;
     padding-left: 20px;
     display: grid;
@@ -246,7 +247,7 @@ aside > div, img {
   }
   #sm-container-sidebar {
     display: block;
-    background-color: #fff;
+    background-color: var(--poore-color);
     box-shadow: 3px 5px 9px rgba(0, 0, 0, 0.25);
     position: fixed;
     top: 0;
@@ -270,7 +271,7 @@ aside > div, img {
   }
   #menuIcon {
     background: transparent;
-    background-image: url("../../imgs/menu.png");
+    background-image: url("../../imgs/menu-DARK.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -19,7 +19,7 @@ const AuthPage = observer(() => {
   }, [])
 
   return (
-    <>
+    <div className={"Auth-pg-container"}>
       <div className={containerClasses} id="container">
         <div className="form-container sign-up-container">
           <Form whichTab='registration'/>
@@ -55,7 +55,7 @@ const AuthPage = observer(() => {
         </div>
       </div>
 
-    </>
+    </div>
   )
 })
 

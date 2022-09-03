@@ -1,15 +1,13 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background-color: #eeeded;
-}
-
 *{
   margin: 0;
   padding: 0;
+}
+
+#settings-pg-container {
+  background-color: var(--background);
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 #profile-image {
@@ -18,7 +16,6 @@ body {
   height: 330px;
   left: 174px;
   top: 134px;
-  background-color: #F9F0FF;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -42,7 +39,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: start;
-  color: #000000;
+  color: var(--text-primary);
 }
 
 #change-name {
@@ -58,7 +55,7 @@ body {
 #username-input-field {
   background-color: transparent;
   border: 0;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid var(--text-secondary);
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;

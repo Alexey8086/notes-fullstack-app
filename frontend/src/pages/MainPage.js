@@ -1,9 +1,14 @@
 import React from 'react'
 import '../styles/main/main.css'
-import astronautImage from '../imgs/Astronaut.png'
+import astronautLight from '../imgs/Astronaut-light.svg'
+import astronautDark from '../imgs/Astronaut-dark.svg'
 import Button from '../components/button'
 
 const MainPage = () => {
+
+  const theme = localStorage.getItem('theme')
+  const icon = theme == '"dark"' ? astronautLight : astronautDark
+
   return (
     <>
     <div id='ctm-container'>
@@ -33,7 +38,8 @@ const MainPage = () => {
     <div id="cursor"></div>
 
     <div id="astronaut-icon">
-      <img width="442px" height="345px" src={astronautImage} alt="Через терний к звёздам!" />
+      <img width="442px" height="345px" src={icon} alt="Через терний к звёздам!" />
+
     </div>
 
     </>

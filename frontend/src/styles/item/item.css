@@ -4,7 +4,7 @@
 }
 
 .item {
-  background-color: #EEEDED;
+  background-color: var(--poore-color);
   border-radius: 25px;
   box-shadow: 3px 5px 9px rgba(0, 0, 0, 0.25);
   transition: 0.8s;
@@ -13,6 +13,7 @@
   row-gap: 5px;
   padding: 15px;
   cursor: pointer;
+  color: var(--text-primary);
 }
 .item div {
   width: 100%;
@@ -51,7 +52,7 @@
   padding-top: 5px;
 }
 .item:hover {
-  background-color: #e5e3e3;
+  background-color: var(--field-bg-color);
   cursor: pointer;
   transition: 0.4s;
 }/*# sourceMappingURL=item.css.map */

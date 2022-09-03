@@ -5,6 +5,7 @@ export default class UserStore {
     // should be false
     this._isAuth = false
     this._user = {}
+    this._setTheme = {}
     makeAutoObservable(this)
   }
 
@@ -16,11 +17,19 @@ export default class UserStore {
     this._user = user
   }
 
+  setSetTheme (setTheme) {
+    this._setTheme = setTheme
+  }
+
   get isAuth () {
     return this._isAuth
   }
 
   get user () {
     return toJS(this._user)
+  }
+
+  get setTheme () {
+    return toJS(this._setTheme)
   }
 }
