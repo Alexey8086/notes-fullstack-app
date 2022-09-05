@@ -1,10 +1,11 @@
-import {makeAutoObservable} from 'mobx'
+import {makeAutoObservable, toJS} from 'mobx'
 
 export default class UserStore {
   constructor () {
     // should be false
     this._isAuth = false
     this._user = {}
+    this._setTheme = {}
     makeAutoObservable(this)
   }
 
@@ -16,11 +17,19 @@ export default class UserStore {
     this._user = user
   }
 
+  setSetTheme (setTheme) {
+    this._setTheme = setTheme
+  }
+
   get isAuth () {
     return this._isAuth
   }
 
   get user () {
-    return this._user
+    return toJS(this._user)
+  }
+
+  get setTheme () {
+    return toJS(this._setTheme)
   }
 }

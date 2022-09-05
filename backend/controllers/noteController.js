@@ -1,13 +1,15 @@
 const Note = require('../models/Note')
+const { v4: uuidv4 } = require('uuid')
 
 class NoteController {
 
   async create (req, res) {
     const {data, userId} = req.body
+    const id = uuidv4()
 
     try {
 
-      const note = new Note({data, userId})
+      const note = new Note({id, userId, data})
       await note.save()
       return res.json("Note has been created")
 
@@ -45,6 +47,7 @@ class NoteController {
 
   async getAllNotes (req, res) {
     const { userId } = req.params
+    console.log('USER ID --->>> ', userId)
 
     try {
       const notes = await Note.find({userId}).exec()
@@ -55,7 +58,7 @@ class NoteController {
     }
   }
 
-  async getOne (req, res, next) {
+  async getOne (req, res) {
     const {id} = req.query
 
     try {

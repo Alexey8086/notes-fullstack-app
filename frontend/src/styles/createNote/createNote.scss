@@ -39,10 +39,7 @@
     font-size: 0.7rem;
     border: 0;
     outline: none;
-    color: #fff;
-
     border-radius: 42px;
-    background-color: #fff;
   }
 
   #btn-save {
@@ -54,11 +51,19 @@
   }
 }
 
+
+#parent_container {
+  background-color: var(--background);
+}
+
+#editor {
+  color: var(--text-primary)!important;
+}
+
 /* SMARTPHONE */
 @media (min-width: 300px) and (max-width: 760px) { 
   
   #parent_container {
-    background-color: #fff;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: minmax(100vh, max-content);
@@ -66,7 +71,7 @@
   }
 
   #workspace_container {
-    background-color: #fff;
+    background-color: var(--poore-color);
     display: grid;
     grid-template-columns: 1fr;
     box-sizing: border-box;
@@ -76,11 +81,11 @@
   
   #editorjs {
     border: none;
-    background-color: #fff;
+    background-color: var(--poore-color);
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    color: rgb(197, 194, 194);
+    color: var(--text-primary);
     font-size: 1.3rem;
     font-family: monospace;
     padding-top: 20px;
@@ -92,7 +97,7 @@
 
 
   .ce-toolbar--opened, .ce-block, .ce-block--focused {
-    background-color: rgb(36, 36, 37);
+    background-color: var(--text-secondary);
   }
 
   #empty_left_column, #empty_right_column {
@@ -105,14 +110,13 @@
 @media (min-width: 761px) and (max-width: 1113px) {
 
   #parent_container {
-    background-color: #eeeded;
     display: grid;
     grid-template-columns: 0.2fr 3fr 0.2fr ;
     grid-template-rows: minmax(100vh, max-content);
   }
 
   #workspace_container {
-    background-color: #fff;
+    background-color: var(--poore-color);
     display: grid;
     grid-template-columns: 100%;
     box-sizing: border-box;
@@ -125,7 +129,7 @@
   #editorjs {
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
-    background-color: #fff;
+    background-color: var(--poore-color);
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -140,25 +144,25 @@
   }
 
   #empty_left_column, #empty_right_column {
-    background-color: #eeeded;
+    background-color: var(--background);
   }
 
   #editor>div {
-    background-color: #fff;
+    background-color: var(--poore-color);
   }
 }
 
 /* DESKTOP */
 @media (min-width: 1114px) and (max-width: 1258px) {
   #parent_container {
-    background-color: #eeeded;
+    background-color: var(--background);
     display: grid;
     grid-template-columns: 0.8fr 3fr 0.8fr ;
     grid-template-rows: minmax(100vh, max-content);
   }
   
   #workspace_container {
-    background-color: #fff;
+    background-color: var(--background);
     display: grid;
     grid-template-columns: 100%;
     box-sizing: border-box;
@@ -171,11 +175,10 @@
   
   #editor {
     border: none;
-    background-color: #fff;
+    background-color: var(--poore-color);
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    color: rgb(197, 194, 194);
     font-size: 1.5rem;
     font-family: monospace;
     padding-top: 20px;
@@ -186,37 +189,36 @@
   }
 
   #empty_left_column {
-    background-color: #eeeded;
+    background-color: var(--poore-color);
   }
 
   #empty_right_column {
-    background-color: #eeeded;
+    background-color: var(--poore-color);
   }
 
   #editor>div {
-    background-color: #fff;
+    background-color: var(--background);
   }
 }
 
 /* LARGE DEVICES */
 @media (min-width: 1259px) {
   #parent_container {
-    background-color: #eeeded;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr ;
     grid-template-rows: minmax(100vh, max-content);
   }
   
   #empty_left_column {
-    background-color: #eeeded;
+    background-color: var(--background);
   }
 
   #empty_right_column {
-    background-color: #eeeded;
+    background-color: var(--background);
   }
 
   #workspace_container {
-    background-color: #fff;
+    background-color: var(--poore-color);
     display: grid;
     grid-template-columns: 100%;
     box-sizing: border-box;
@@ -229,11 +231,10 @@
   
   #editorjs {
     border: none;
-    background-color: #fff;
+    background-color: var(--poore-color);
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    color: rgb(197, 194, 194);
     font-size: 1.5rem;
     font-family: monospace;
     outline: none;

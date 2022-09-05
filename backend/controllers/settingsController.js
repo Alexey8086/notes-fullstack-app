@@ -4,9 +4,9 @@ const ApiError = require('../error/ApiError')
 class SettingsController {
 
   async update (req, res) {
-    const {id, avatar} = req.body
+    const {id, avatar, name} = req.body
     try {
-      await UserN.updateOne({id}, {avatar})
+      await UserN.updateOne({id}, {avatar, name})
       return res.json("Data has been updated")
 
     } catch (error) {

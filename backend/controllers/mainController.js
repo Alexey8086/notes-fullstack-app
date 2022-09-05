@@ -26,7 +26,7 @@ class MainController {
       const hashPassword = await bcrypt.hash(password, 5)
       const user = new UserN({email, password: hashPassword, name, avatar})
       const userData = await user.save()
-      const token = generateJwt(userData.id, userData.email)
+      const token = generateJwt(userData.id, userData.email, userData.name, userData.avatar)
 
       res.json({token})
   }
@@ -45,7 +45,7 @@ class MainController {
       return next(ApiError.internal('Указан неверный пароль'))
     }
 
-    const token = generateJwt(user.id, user.email)
+    const token = generateJwt(user.id, user.email, user.name, user.avatar)
     
     // req.session.user = user
     // req.session.isAuthenticated = true
@@ -54,15 +54,15 @@ class MainController {
     res.json({token})
   }
 
-  async logout (req, res, next) {
+  async logout (req, res) {
     req.session.destroy(() => {
       res.redirect('/login')
     })
     
   }
 
-  async check(req, res, next) {
-    const token = generateJwt(req.user.id, req.user.email)
+  async check(req, res) {
+    const token = generateJwt(req.user.id, req.user.email, req.user.name, req.user.avatar)
     res.json({token})
   }
 

@@ -16,17 +16,22 @@ const HomePage = observer(() => {
   const [loading, setLoading] = useState(true)
   const [notes, setNotes] = useState('')
   const [id, setId] = useState()
+  const [user_state, setUser] = useState()
 
 
   useEffect(() => {
     let userId
 
-    if (showLogs) console.log(user)
-    user.user.id ? userId = user.user.id : userId = user.user.data?.user.id
+    if (showLogs) console.log(user.user)
+    userId = user.user.id
     setId(userId)
 
     getUser(userId)
-      .then(data => user.setUser(data))
+      .then(data => {
+        user.setUser(data)
+        setUser(data)
+        console.log('DATA ', data)
+      })
       .catch((e) => console.log(e.response.data?.message))
 
     getAllNotes(userId)
@@ -35,6 +40,8 @@ const HomePage = observer(() => {
         setLoading(false)
       })
       .catch((e) => console.log(e))
+
+      
     
    }, [])
 
@@ -50,7 +57,7 @@ const HomePage = observer(() => {
     }
    }, [])
 
-  console.log(notes.length)
+  if (showLogs) console.log('NOTES ARRAY LENGTH --->>>', notes.length)
 
   return (
     <>
@@ -62,7 +69,7 @@ const HomePage = observer(() => {
       </div>
 
       <div id="main-grid-container">
-          <Sidebar userId={id}/>
+          <Sidebar userId={id} user={user_state}/>
           <div id="blocks-grid-container">
           {  loading ? 
             <BarLoader color = { '#837DFE' } loading = { loading } size = { 150 } />

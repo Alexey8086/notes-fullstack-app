@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import backArrow from  '../imgs/back.png'
 import '../styles/settings/settings.css'
 import { HOME_PG_ROUTE } from '../utils/consts'
@@ -13,6 +13,8 @@ const SettingsPage = () => {
   const [userName, setName] = useState()
   const inputFileRef = useRef(null)
   const inputNameRef = useRef(null)
+
+  const navigate = useNavigate()
 
   const isAvatarMine = (url) => {
     if (url?.indexOf('https://avatars.dicebear.com') == -1) {
@@ -45,9 +47,10 @@ const SettingsPage = () => {
     }
   }
 
-  const uploadHandler = async (userId, avatarUrl) => {
+  const uploadHandler = async (userId, avatarUrl, name) => {
     try {
-      await updateSettings(userId, avatarUrl)
+      await updateSettings(userId, avatarUrl, name)
+      navigate(HOME_PG_ROUTE)
     } catch (err) {
       console.warn(err)
     }
@@ -64,7 +67,7 @@ const SettingsPage = () => {
 
   return (
 
-    <>
+    <div id={"settings-pg-container"}>
       <img id="back_link_img" width="50" height="50" src={ backArrow } alt="" />
       <div id="back-link-wrapper">
         <Link to={ HOME_PG_ROUTE }>Вернуться назад</Link>
@@ -91,8 +94,8 @@ const SettingsPage = () => {
         <p onClick = {() => { inputNameRef.current.disabled = false }} id="change-name">Изменить имя</p>
       </div>
 
-      <button onClick = { () => { uploadHandler(id, url) } } id="save-changes-btn" type="submit">Сохранить изменения</button>
-    </>
+      <button onClick = { () => { uploadHandler(id, url, userName) } } id="save-changes-btn" type="submit">Сохранить изменения</button>
+    </div>
 
   )
 }
