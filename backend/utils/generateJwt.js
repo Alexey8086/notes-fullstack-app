@@ -1,9 +1,10 @@
 const jwt = require('jsonwebtoken')
+const config = require('@/../../backend-config')
 
 const generateJwt = (id, email, name, avatar) => {
     return jwt.sign(
       { id, email, name, avatar},
-      process.env.SECRET_KEY,
+      config.jwt_key,
       { expiresIn: '10h' }
     )
   }

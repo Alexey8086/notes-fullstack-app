@@ -5,6 +5,8 @@ import '../styles/settings/settings.css'
 import { HOME_PG_ROUTE } from '../utils/consts'
 import { getUser, updateSettings, handleImage } from '../http/userAPI'
 
+import config from '@/../../frontend-config'
+
 
 const SettingsPage = () => {
 
@@ -62,7 +64,7 @@ const SettingsPage = () => {
   }
 
   const style = isAvatarMine() ?
-    { backgroundImage: `url(${process.env.REACT_APP_API_URL}${url})` }
+    { backgroundImage: `url(${config.baseUrl}${url})` }
   : { backgroundImage: `url(${url})` }
 
   return (

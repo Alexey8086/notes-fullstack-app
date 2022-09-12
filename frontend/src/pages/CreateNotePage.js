@@ -8,16 +8,16 @@ import { TOOLS } from '../utils/editorTools'
 import { HOME_PG_ROUTE } from '../utils/consts'
 import { createNote } from '../http/noteAPI'
 
+import config from '@/../../frontend-config'
 
 
 const NotePage = observer(() => {
 
-  const showLogs = process.env.REACT_APP_SHOW_LOGS
   const { user } = useContext(Context)
   const navigate = useNavigate()
 
   let userId
-  user.user.id ? userId = user.user.id : userId = user.user.data?.user.id
+  userId = user.user.id ? user.user.id : user.user._id 
 
   useEffect(() => {
     // componentWillMount
@@ -46,7 +46,7 @@ const NotePage = observer(() => {
     const res = await createNote(DATA, userId)
 
 
-    if (showLogs) {
+    if (config.show_logs) {
       console.log('SAVED DATA from editorJS -------- > ', DATA)
       console.log('RESPONSE FROM SERVER -------- > ', res)
     }

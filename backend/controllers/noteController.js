@@ -1,5 +1,6 @@
 const Note = require('../models/Note')
 const { v4: uuidv4 } = require('uuid')
+const config = require('@/../../backend-config')
 
 class NoteController {
 
@@ -9,7 +10,7 @@ class NoteController {
 
     try {
 
-      const note = new Note({id, userId, data})
+      const note = new Note({id: id, userId: userId, data: data})
       await note.save()
       return res.json("Note has been created")
 
@@ -34,7 +35,7 @@ class NoteController {
   async deleteOne (req, res) {
     const {id} = req.query
 
-    if (process.env.SHOW_LOGS) console.log('id ------->>>>>> ', id)
+    if (config.show_logs) console.log('id ------->>>>>> ', id)
 
     try {
       const response = await Note.deleteOne({id})
@@ -47,7 +48,6 @@ class NoteController {
 
   async getAllNotes (req, res) {
     const { userId } = req.params
-    console.log('USER ID --->>> ', userId)
 
     try {
       const notes = await Note.find({userId}).exec()

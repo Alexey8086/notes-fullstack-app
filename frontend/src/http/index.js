@@ -1,11 +1,12 @@
 import axios from 'axios'
+import config from '@/../../frontend-config'
 
 const $host = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
+  baseURL: config.baseUrl
 })
 
 const $authHost = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
+  baseURL: config.baseUrl
 })
 
 const authInterceptor = config => {

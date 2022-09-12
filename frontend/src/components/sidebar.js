@@ -15,6 +15,8 @@ import themeIconLIGHT from '../imgs/Theme-LIGHT.svg'
 import settingsLIGHT from '../imgs/Settings-LIGHT.svg'
 import logoutLIGHT from '../imgs/Logout-LIGHT.svg'
 
+import config from '@/../../frontend-config'
+
 import { observer } from 'mobx-react-lite'
 
 const theme = localStorage.getItem('theme')
@@ -72,7 +74,7 @@ const Sidebar = observer((props) => {
   }
 
   const avatarStyle = isAvatarMine(avatar) ?
-    { backgroundImage: `url(${process.env.REACT_APP_API_URL}${avatar})` }
+    { backgroundImage: `url(${config.baseUrl}${avatar})` }
   : { backgroundImage: `url(${avatar})` }
 
   return (

@@ -29,14 +29,18 @@ const Form = observer((props) => {
       let res
       if (isLogin) {
         res = await login(email, password)
+        user.setUser(res)
+        user.setIsAuth(true)
         navigate(HOME_PG_ROUTE)
       } else {
         res = await registration(email, password, name)
+        user.setUser(res)
+        user.setIsAuth(true)
         navigate(HOME_PG_ROUTE)
       }
       
-      user.setUser(res)
-      user.setIsAuth(true)
+      // user.setUser(res)
+      // user.setIsAuth(true)
     } catch (e) {
       setError(e.response?.data?.message)
     }

@@ -1,7 +1,6 @@
 const Router = require('express')
 const router = new Router()
 const mainRouter = require('./mainRouter')
-// const homeRouter = require('./homeRouter')
 const noteRouter = require('./noteRouter')
 const settingsRouter = require('./settingsRouter')
 const uploadRouter = require('./uploadRouter')

@@ -9,6 +9,7 @@ import { getOneNote, updataNote, deleteOneNote } from '../http/noteAPI'
 import { HOME_PG_ROUTE } from '../utils/consts'
 import PuffLoader from "react-spinners/BarLoader"
 
+import config from '@/../../frontend-config'
 
 const NotePage = observer(() => {
 
@@ -54,15 +55,16 @@ const NotePage = observer(() => {
     const DATA = await editorCore.current.save()
     const res = await updataNote(DATA, noteId)
 
-    if (process.env.REACT_APP_SHOW_LOGS) console.log('SAVED DATA from editorJS -------- > ', DATA)
-    if (process.env.REACT_APP_SHOW_LOGS) console.log('RESPONSE FROM SERVER -------- > ', res)
+    if (config.show_logs) console.log('SAVED DATA from editorJS -------- > ', DATA)
+    if (config.show_logs) console.log('RESPONSE FROM SERVER -------- > ', res)
+
     navigate(HOME_PG_ROUTE)
   }, [])
 
   const handleDelete = useCallback(async () => {
     const res = await deleteOneNote(noteId)
 
-    if (process.env.REACT_APP_SHOW_LOGS) console.log('RESPONSE FROM SERVER -------- > ', res)
+    if (config.show_logs) console.log('RESPONSE FROM SERVER -------- > ', res)
     navigate(HOME_PG_ROUTE)
   }, [])
 

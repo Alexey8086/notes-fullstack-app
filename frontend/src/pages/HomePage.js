@@ -8,10 +8,11 @@ import { getUser } from '../http/userAPI'
 import { getAllNotes } from '../http/noteAPI'
 import BarLoader from "react-spinners/BarLoader"
 
+import config from '@/../../frontend-config'
+
 
 const HomePage = observer(() => {
 
-  const showLogs = process.env.REACT_APP_SHOW_LOGS
   const { user } = useContext(Context)
   const [loading, setLoading] = useState(true)
   const [notes, setNotes] = useState('')
@@ -22,15 +23,17 @@ const HomePage = observer(() => {
   useEffect(() => {
     let userId
 
-    if (showLogs) console.log(user.user)
-    userId = user.user.id
+    if (config.show_logs) console.log(user.user)
+    
+    userId = user.user.id ? user.user.id : user.user._id 
     setId(userId)
 
     getUser(userId)
       .then(data => {
         user.setUser(data)
         setUser(data)
-        console.log('DATA ', data)
+
+        if (config.show_logs) console.log('DATA ', data)
       })
       .catch((e) => console.log(e.response.data?.message))
 
@@ -40,8 +43,6 @@ const HomePage = observer(() => {
         setLoading(false)
       })
       .catch((e) => console.log(e))
-
-      
     
    }, [])
 
@@ -57,7 +58,7 @@ const HomePage = observer(() => {
     }
    }, [])
 
-  if (showLogs) console.log('NOTES ARRAY LENGTH --->>>', notes.length)
+  if (config.show_logs) console.log('NOTES ARRAY LENGTH --->>>', notes.length)
 
   return (
     <>
