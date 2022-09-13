@@ -4,7 +4,8 @@ const {Schema, model} = require('mongoose')
 const Note = new Schema({
     id: {
         type: String,
-        require: true
+        require: true,
+        unique: true
     },
     userId: {
         type: String,

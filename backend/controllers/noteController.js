@@ -47,10 +47,10 @@ class NoteController {
   }
 
   async getAllNotes (req, res) {
-    const { userId } = req.params
+    const user = req.user
 
     try {
-      const notes = await Note.find({userId}).exec()
+      const notes = await Note.find({userId: user.id}).exec()
       return res.json(notes)
 
     } catch (error) {

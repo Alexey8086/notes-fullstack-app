@@ -46,6 +46,8 @@ aside > div, img {
 }
 
 #logo {
+  width: 54px;
+  height: 56px;
   top: 18px;
   left: 35px;
 }
@@ -198,6 +200,9 @@ aside > div, img {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+}
+#sidebar > img {
+  border-radius: 15px;
 }
 
 #blocks-grid-container {

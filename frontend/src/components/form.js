@@ -39,8 +39,6 @@ const Form = observer((props) => {
         navigate(HOME_PG_ROUTE)
       }
       
-      // user.setUser(res)
-      // user.setIsAuth(true)
     } catch (e) {
       setError(e.response?.data?.message)
     }

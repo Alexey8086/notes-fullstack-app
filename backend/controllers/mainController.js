@@ -55,9 +55,6 @@ class MainController {
   
       const token = generateJwt(user.id, user.email, user.name, user.avatar)
       
-      // req.session.user = user
-      // req.session.isAuthenticated = true
-      // req.session.save (err => { if (err) throw err })
   
       res.json({token})
 
@@ -66,26 +63,24 @@ class MainController {
     }
   }
 
-  // async logout (req, res) {
-  //   req.session.destroy(() => {
-  //     res.redirect('/login')
-  //   })
-  // }
 
   async check(req, res) {
-    const token = generateJwt(req.user.id, req.user.email, req.user.name, req.user.avatar)
+    const {id, email, name, avatar} = req.user
+    const token = generateJwt(id, email, name, avatar)
     res.json({token})
   }
 
   async getUser (req, res, next) {
     try {
-      const {id} = req.params
-      const user = await UserN.findOne({_id: id})
-      if (!user) {
+      const user = req.user
+
+      const USER = await UserN.findOne({_id: user.id})
+
+      if (!USER) {
         return next(ApiError.badRequest('Упс, у вас проблемы с аутентификацией, мы не можем вас найти'))
       }
   
-      return res.json({user})
+      return res.json({user: USER})
 
     } catch (error) {
       console.warn('Error from getting User from data base', error)

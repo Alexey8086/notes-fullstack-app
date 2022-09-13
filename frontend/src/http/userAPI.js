@@ -19,8 +19,8 @@ export const check = async () => {
   return jwt_decode(data.token)
 }
 
-export const getUser = async (id) => {
-  const user = await $host.get(`api/user/getUser/${id}`)
+export const getUser = async () => {
+  const user = await $authHost.post('api/user/getUser')
   return user
 }
 

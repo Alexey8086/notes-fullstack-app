@@ -6,7 +6,7 @@ class SettingsController {
   async update (req, res) {
     const {id, avatar, name} = req.body
     try {
-      await UserN.updateOne({id}, {avatar, name})
+      await UserN.updateOne({_id: id}, {avatar, name})
       return res.json("Data has been updated")
 
     } catch (error) {

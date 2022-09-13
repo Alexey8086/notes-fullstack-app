@@ -8,12 +8,12 @@
     --accent: purple;
   }
   
-  [data-theme='dark'] {
-    --main-pg-btn: rgb(238, 238, 238);
-    --field-bg-color: rgb(64, 64, 64);
-    --poore-color: rgb(31, 31, 31);
-    --background: rgb(44, 44, 44);
-    --text-primary: rgb(224, 224, 224);
-    --text-secondary: rgb(195, 195, 195);
-    --accent: purple;
-  }
+[data-theme='dark'] {
+  --main-pg-btn: rgb(238, 238, 238);
+  --field-bg-color: rgb(64, 64, 64);
+  --poore-color: rgb(31, 31, 31);
+  --background: rgb(44, 44, 44);
+  --text-primary: rgb(224, 224, 224);
+  --text-secondary: rgb(195, 195, 195);
+  --accent: purple;
+}

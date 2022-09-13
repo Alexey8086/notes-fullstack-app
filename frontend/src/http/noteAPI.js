@@ -21,7 +21,7 @@ export const getOneNote = async (id) => {
   return data
 }
 
-export const getAllNotes = async (userId) => {
-  const data = await $authHost.get(`api/notes/all/${userId}`)
+export const getAllNotes = async () => {
+  const data = await $authHost.post('api/notes/all')
   return data
 }

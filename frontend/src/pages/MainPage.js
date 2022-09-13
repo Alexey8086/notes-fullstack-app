@@ -7,7 +7,7 @@ import Button from '../components/button'
 const MainPage = () => {
 
   const theme = localStorage.getItem('theme')
-  const icon = theme == '"dark"' ? astronautLight : astronautDark
+  const icon = theme === '"dark"' ? astronautLight : astronautDark
 
   return (
     <>

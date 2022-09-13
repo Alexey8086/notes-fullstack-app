@@ -43,6 +43,7 @@ const NotePage = observer(() => {
 
   const handleSave = useCallback(async () => {
     const DATA = await editorCore.current.save()
+    debugger
     const res = await createNote(DATA, userId)
 
 

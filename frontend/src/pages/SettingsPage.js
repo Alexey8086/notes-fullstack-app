@@ -19,7 +19,7 @@ const SettingsPage = () => {
   const navigate = useNavigate()
 
   const isAvatarMine = (url) => {
-    if (url?.indexOf('https://avatars.dicebear.com') == -1) {
+    if (url?.indexOf('https://avatars.dicebear.com') === -1) {
       return true
     } else {
       return false
@@ -28,7 +28,7 @@ const SettingsPage = () => {
 
   useEffect(() => {
 
-    getUser(id)
+    getUser()
       .then(data => {
         if (data.data.user.avatar) setUrl(data.data.user.avatar)
         setName(data.data.user.name)

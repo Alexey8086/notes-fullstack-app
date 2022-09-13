@@ -27,6 +27,7 @@ app.use(varMiddleware)
 app.use('/api', router)
 
 if (config.node_env === 'production') {
+  console.log('PRODUCTION MODE INABLE')
   app.use('/', express.static(path.join(__dirname, '../client/build')))
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
