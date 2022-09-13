@@ -22,15 +22,15 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }))
+
 app.use(varMiddleware)
-// app.use(fileUpload({}))
 app.use('/api', router)
 
 if (config.node_env === 'production') {
   console.log('PRODUCTION MODE INABLE')
-  app.use('/', express.static(path.join(__dirname, '../client/build')))
+  app.use('/', express.static(path.join(__dirname, '../frontend/build')))
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'))
+    res.sendFile(path.resolve(__dirname, '../frontend', 'build', 'index.html'))
   })
 }
 
