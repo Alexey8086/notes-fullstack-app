@@ -9,7 +9,7 @@ import { getOneNote, updataNote, deleteOneNote } from '../http/noteAPI'
 import { HOME_PG_ROUTE } from '../utils/consts'
 import PuffLoader from "react-spinners/BarLoader"
 
-import config from '@/../../frontend-config'
+import config from '../config'
 
 const NotePage = observer(() => {
 

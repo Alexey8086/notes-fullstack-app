@@ -1,8 +1,8 @@
 import { $authHost, $host } from "./index"
 
 
-export const createNote = async (data, userId) => {
-  const res = await $authHost.post('api/notes/create', {data, userId})
+export const createNote = async (data) => {
+  const res = await $authHost.post('api/notes/create', {data})
   return res
 }
 

@@ -1,16 +1,17 @@
 const Note = require('../models/Note')
 const { v4: uuidv4 } = require('uuid')
-const config = require('@/../../backend-config')
+const config = require('../config')
 
 class NoteController {
 
   async create (req, res) {
-    const {data, userId} = req.body
-    const id = uuidv4()
+    const {data} = req.body
+    const {id} = req.user
+    const uid = uuidv4()
 
     try {
 
-      const note = new Note({id: id, userId: userId, data: data})
+      const note = new Note({id: uid, userId: id, data: data})
       await note.save()
       return res.json("Note has been created")
 

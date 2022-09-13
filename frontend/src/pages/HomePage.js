@@ -8,7 +8,7 @@ import { getUser } from '../http/userAPI'
 import { getAllNotes } from '../http/noteAPI'
 import BarLoader from "react-spinners/BarLoader"
 
-import config from '@/../../frontend-config'
+import config from '../config'
 
 
 const HomePage = observer(() => {

@@ -8,7 +8,7 @@ import { TOOLS } from '../utils/editorTools'
 import { HOME_PG_ROUTE } from '../utils/consts'
 import { createNote } from '../http/noteAPI'
 
-import config from '@/../../frontend-config'
+import config from '../config'
 
 
 const NotePage = observer(() => {
@@ -16,8 +16,6 @@ const NotePage = observer(() => {
   const { user } = useContext(Context)
   const navigate = useNavigate()
 
-  let userId
-  userId = user.user.id ? user.user.id : user.user._id 
 
   useEffect(() => {
     // componentWillMount
@@ -43,9 +41,7 @@ const NotePage = observer(() => {
 
   const handleSave = useCallback(async () => {
     const DATA = await editorCore.current.save()
-    debugger
-    const res = await createNote(DATA, userId)
-
+    const res = await createNote(DATA)
 
     if (config.show_logs) {
       console.log('SAVED DATA from editorJS -------- > ', DATA)

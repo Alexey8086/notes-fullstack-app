@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext, useRef} from 'react'
 import { Context } from '../index'
 import { useNavigate, useParams} from "react-router-dom"
 import { SETTINGS_PG_ROUTE, NOTE_PG_ROUTE, AUTH_PG_ROUTE } from '../utils/consts'
-import config from '@/../../frontend-config'
+import config from '../config'
 
 import { observer } from 'mobx-react-lite'
 

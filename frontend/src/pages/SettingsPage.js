@@ -5,7 +5,7 @@ import '../styles/settings/settings.css'
 import { HOME_PG_ROUTE } from '../utils/consts'
 import { getUser, updateSettings, handleImage } from '../http/userAPI'
 
-import config from '@/../../frontend-config'
+import config from '../config'
 
 
 const SettingsPage = () => {

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import config from '@/../../frontend-config'
+import config from '../config'
 
 const $host = axios.create({
   baseURL: config.baseUrl
